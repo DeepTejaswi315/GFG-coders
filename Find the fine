@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--)
+	{
+	    int n,d;
+	    cin>>n>>d;
+	    int c[n], f[n],i;
+	    for(i=0;i<n;i++)
+	     {
+	         cin>>c[i];
+	     }
+	     for(i=0;i<n;i++)
+	     {
+	         cin>>f[i];
+	     }
+	      int fine=0;
+	     if(d%2==0)
+	      {
+	          for(i=0;i<n;i++)
+	          {
+	              if(c[i]%2!=0) 
+	              {
+	                  fine=fine+f[i];
+	              }
+	          }
+	      }
+	      else
+	      {
+	          for(i=0;i<n;i++)
+	          {
+	              if(c[i]%2==0) 
+	              {
+	                  fine=fine+f[i];
+	              }
+	          }
+	      }
+	      cout<<fine<<endl;
+	}
+	return 0;
+}

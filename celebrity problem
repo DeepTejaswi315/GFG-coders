@@ -1,0 +1,19 @@
+bool knows(int a[MAX][MAX] , int i, int j){
+    return a[i][j]==1? true: false;
+}
+
+int getId(int a[MAX][MAX], int n)
+{
+     int candidate=0;
+     for(int i=1; i<n&&candidate<n-1; i++){
+         if(knows(a,candidate,i)){
+             candidate=i;
+         }
+     }
+     for(int k=0; k<n; k++){
+         if(k!=candidate && (!knows(a,k,candidate) || knows(a,candidate,k))){
+             return -1;
+         }
+     }
+    return candidate;
+}

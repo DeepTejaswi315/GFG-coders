@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+bitset<132>b;
+bool call(int n)
+{
+int x=n - ceil(log2(n));
+for (; x < n ; x++) 
+{
+b=x;
+if (x + b.count() == n) 
+return false; 
+}
+return true; 
+}
+
+int main() {
+	int t; cin>>t;
+	while(t--)
+	{
+	    ll n; cin>>n;
+	    if(!call(n)) cout<<0<<'\n';
+	    else cout<<1<<'\n';
+	}
+	return 0;
+}

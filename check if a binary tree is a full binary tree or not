@@ -1,0 +1,11 @@
+bool isFullTree (struct Node* root)
+{
+if(root==NULL) return true;
+else
+{
+    if(root->left == NULL && root->right || root->right==NULL && root->left) 
+    return false;
+    else return (isFullTree(root->left) && isFullTree(root->right));
+}
+return false;
+}

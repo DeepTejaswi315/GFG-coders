@@ -1,0 +1,41 @@
+void fillInorder(Node* root, char arr[], int& i) 
+{ 
+    if (root == NULL) { 
+        arr[i++] = '$'; 
+        return; 
+    } 
+    fillInorder(root->left, arr, i); 
+    arr[i++] = root->data; 
+    fillInorder(root->right, arr, i); 
+} 
+void fillPreOrder(Node* root, char arr[], int& i) 
+{ 
+    if (root == NULL) { 
+        arr[i++] = '$'; 
+        return; 
+    } 
+    arr[i++] = root->data; 
+    fillPreOrder(root->left, arr, i); 
+    fillPreOrder(root->right, arr, i); 
+} 
+bool isSubtree(Node* t, Node* s) {
+   if(s==NULL) return true;
+   if(t==NULL) return false;
+   
+   int m=0,n=0;
+   char inT[MAX] , inS[MAX];
+   fillInorder(t,inT,m);
+   fillInorder(s,inS,n);
+   inT[m]='\0'; inS[n]='\0';
+   
+   if(strstr(inT, inS) == NULL) return false;
+   
+   m=0,n=0;
+   char preT[MAX] , preS[MAX];
+   fillPreOrder(t,preT,m);
+   fillPreOrder(s,preS,n);
+   preT[m]='\0'; preS[n]='\0';
+   
+   return (strstr(preT, preS) != NULL);
+   
+}

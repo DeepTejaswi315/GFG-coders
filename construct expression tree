@@ -1,0 +1,34 @@
+et* constructTree(char postfix[])
+{
+stack<et *> st; 
+    et *t, *t1, *t2; 
+  
+    
+    for (int i=0; i<strlen(postfix); i++) 
+    { 
+        if (!isOperator(postfix[i])) 
+        { 
+            t = newNode(postfix[i]); 
+            st.push(t); 
+        } 
+        else  
+        { 
+            t = newNode(postfix[i]); 
+  
+            t1 = st.top(); 
+            st.pop();       
+            t2 = st.top(); 
+            st.pop(); 
+  
+            
+            t->right = t1; 
+            t->left = t2; 
+  
+            st.push(t); 
+        } 
+    } 
+    t = st.top(); 
+    st.pop(); 
+  
+    return t; 
+}

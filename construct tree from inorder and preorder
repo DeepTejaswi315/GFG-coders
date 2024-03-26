@@ -1,0 +1,22 @@
+int search(int in[], int inStrt , int inEnd, int tNode){
+    int i;
+    for(i=inStrt; i<=inEnd; i++)
+      {
+          if(in[i] == tNode)
+            return i;
+      }
+}
+//from inorder and preorder
+Node* buildTree(int in[],int pre[], int inStrt, int inEnd)
+{
+   // preIndex=0;
+    if(inStrt > inEnd)
+       return NULL;
+    Node *tNode = newNode(pre[preIndex++]);
+    if(inStrt == inEnd)
+       return tNode;
+    int inIndex = search(in, inStrt, inEnd, tNode->data);
+    tNode->left = buildTree(in,pre,inStrt, inIndex-1);
+    tNode->right = buildTree(in,pre,inIndex+1, inEnd);
+return tNode;
+}

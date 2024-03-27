@@ -1,0 +1,18 @@
+int value(Node* root,int x,int &count)
+{
+if(root==NULL)
+return 0;
+int s1=value(root->left,x,count);
+int s2=value(root->right,x,count);
+if(s1+s2+root->data==x)
+count++;
+
+}
+int countSubtreesWithSumX(Node* root, int x)
+{
+if(root==NULL)
+return 0;
+int count=0;
+value(root,x,count);
+return count;
+}

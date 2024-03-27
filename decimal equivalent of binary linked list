@@ -1,0 +1,11 @@
+long long unsigned int decimalValue(Node *head)
+{
+   long long unsigned int s=0;
+   Node *t=head;
+   while(t)
+   {
+       s= ((s<<1) + (t->data?1:0)) %1000000007;
+       t=t->next;
+   }
+   return s%1000000007;
+}

@@ -1,0 +1,58 @@
+void deleteDeepest(Node *root, Node *temp){
+    queue<Node*> q; q.push(root);
+    while(!q.empty()){
+        Node *t = q.front(); q.pop();
+        if(t==temp){
+            t=NULL;
+            delete(temp);
+            return;
+        }
+        if(t->right){
+            if(t->right == temp)
+             {
+                 t->right=NULL;
+                 delete(temp);
+                 return;
+             }
+             else q.push(t->right);
+        }
+        if(t->left){
+            if(t->left == temp)
+             {
+                 t->left=NULL;
+                 delete(temp);
+                 return;
+             }
+             else q.push(t->left);
+        }
+    }
+}
+
+
+void deletionBT(struct Node* root, int key)
+{
+    if(root == NULL) return;
+    if(root->left ==NULL && root->right==NULL){
+       if(root->key == key)
+           {
+             root=NULL;
+             return;
+           }
+        else return;
+    }
+    queue<Node *> q;
+    Node *key_node=NULL ,*t;
+    q.push(root);
+    while(!q.empty()){
+        t=q.front(); q.pop();
+        if(t->key == key )
+             key_node=t;
+        if(t->left) q.push(t->left);
+        if(t->right) q.push(t->right);
+    }
+    if(key_node!=NULL){
+        int x=t->key;
+        deleteDeepest(root,t);
+        key_node->key = x;
+    }
+}

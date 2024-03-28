@@ -1,0 +1,22 @@
+void deleteNode(Node **head_ref, int x)
+{
+    int k=1;
+    Node *y,*temp=*head_ref , *t=*head_ref;
+    if(x==1){
+        *head_ref = (*head_ref)->next;
+        //(head_ref)->prev = NULL;
+        //free(temp);
+        return;
+    }
+    while(k<x && t->next!=NULL){
+        k++;
+        t=t->next;
+    }
+    y=t->prev;
+    y->next=t->next;
+    if(t->next){//if by any chance t->next ie the pointer is till existing
+        t->next->prev=y;
+        free(t);
+        return;
+    }
+}

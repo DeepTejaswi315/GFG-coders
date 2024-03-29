@@ -1,0 +1,23 @@
+void getDiagonal(Node *root, map<int, vector<int>> &m, int d){
+    if(!root) return;
+    m[d].push_back(root->data);
+    getDiagonal(root->left,m,d+1);
+    getDiagonal(root->right,m,d);
+}
+
+
+
+void diagonalSum(Node* root)
+{
+ map<int, vector<int>> m;
+   int d=0;
+   getDiagonal(root,m,d);
+   for(auto u: m){
+       int sum=0;
+       for(int it=0; it<u.second.size(); it++){
+            sum = sum + u.second[it];
+       }
+    cout<<sum<<" ";
+   }
+   cout<<'\n';
+}

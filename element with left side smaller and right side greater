@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int findPivot(int a[], int n) 
+{ 
+int Left_max[n];
+int Right_min[n];
+
+Left_max[0]=INT_MIN;
+Right_min[n-1]=INT_MAX;
+
+for(int i=1;i<n;i++){ 
+    Left_max[i]=max(a[i-1],Left_max[i-1]);
+    }
+    
+for(int i=n-1; i>=0; i--) 
+{
+Right_min[i-1] = min(Right_min[i], a[i]);
+}
+
+for(int i=1;i<n-1;i++){ 
+    if(a[i]>=Left_max[i] && a[i]<=Right_min[i]){
+return a[i];
+}
+
+}
+
+return -1;
+
+}
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n; cin>>n;
+	    int a[n]; for(int i=0; i<n; i++) cin>>a[i];
+	    cout<<findPivot(a,n);
+	    cout<<'\n';
+	    
+	}
+	return 0;
+}

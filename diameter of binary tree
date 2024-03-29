@@ -1,0 +1,18 @@
+int height(Node *r){
+    if(r==NULL) return 0;
+    else{
+        int l=height(r->left);
+        int r1=height(r->right);
+        if(l>r1) return l+1;
+        else return r1+1;
+    }
+}
+int diameter(Node* node)
+{
+   if(node==NULL) return 0;
+    int k= height(node->left) + height(node->right)+1;
+   int l=diameter(node->left);
+   int r=diameter(node->right);
+   return max(k , max(r,l));
+   
+}

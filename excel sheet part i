@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+string title(int number)
+{
+    return number==0?"":title((number-1)/26)+(char)((number-1)%26+'A');
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
+        cin>>t;
+    while(t--)
+    {
+        int num;
+        cin>>num;
+        cout<<title(num)<<"\n";
+    }
+    return 0;
+}

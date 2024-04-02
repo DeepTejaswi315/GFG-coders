@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool compare(pair<int,int> p1,pair<int,int> p2 )
+{
+    if(p1.second == p2.second)
+     return p1.first>p2.first;
+    else return p1.second>p2.second;
+}
+void mostfreq(int a[], int n, int k)
+{
+    unordered_map<int,int> h;
+    for(int i=0; i<n; i++)
+    {
+        h[a[i]]++;
+    }
+    vector<pair<int ,int>> v(h.begin(), h.end());
+    
+    sort(v.begin(), v.end(), compare);
+    
+    for(int i=0; i<k;i++) cout<<v[i].first<<" ";
+}
+
+int main()
+{
+    int n,k; cin>>n>>k;
+    int a[n];
+    for(int i=0;i<n;i++)
+     {
+         cin>>a[i];
+     }
+    mostfreq(a,n,k);
+
+    return 0;
+}

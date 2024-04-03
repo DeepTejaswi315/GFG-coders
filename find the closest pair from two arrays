@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int m,n,x; cin>>m>>n;
+	    int a[m],b[n];
+	    for(int i=0; i<m; i++) cin>>a[i];
+	    for(int j=0; j<n; j++) cin>>b[j];
+	    cin>>x;
+	    sort(a,a+m);
+	    sort(b,b+n);
+	    int i=0,j=n-1,p,q,diff=INT_MAX;
+	    while(i<m && j>=0){
+	       
+	       
+	       if (abs(a[i] + b[j] - x) < diff) 
+           { 
+           p = i; 
+           q = j; 
+           diff = abs(a[i] + b[j] - x); 
+           }  
+  
+       
+       if (a[i] + b[j] > x) 
+           j--; 
+       else   
+           i++; 
+	       
+	       
+	    }
+	    cout<<a[p]<<" "<<b[q]<<'\n';
+	}
+	return 0;
+}

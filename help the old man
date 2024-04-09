@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+static int c,m;
+void toh(int n, int s, int a, int d){
+    if(n>0){
+        toh(n-1,s,d,a);
+        c++;
+        if(m==c) {
+            cout<<s<<" "<<d<<endl;;
+        }
+        toh(n-1,a,s,d);
+    }
+}
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n; cin>>n>>m;
+	    c=0;
+	    toh(n,1,2,3);
+	}
+	return 0;
+}

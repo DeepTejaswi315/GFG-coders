@@ -1,0 +1,40 @@
+bool isInterleave(string A, string B, string C) 
+{
+    int i=0,j=0,k=0;
+    while(k != C.length())
+    {
+        if(i != A.length()-1 && A[i] == C[k] && j != B.length()-1 && B[j] == C[k])
+        {
+            if(A[i+1] == C[k+1])
+            {
+                i++;
+                k++;
+            }
+            else if(B[j+1] == C[k+1])
+            {
+                j++;
+                k++;
+            }
+            else
+            {
+                i++;
+                k++;
+            }
+        }
+        else if(i != A.length() && A[i] == C[k])
+        {
+            i++;
+            k++;
+        }
+        else if(j != B.length() && B[j] == C[k])
+        {
+            j++;
+            k++;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    return true;
+}

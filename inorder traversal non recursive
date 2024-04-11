@@ -1,0 +1,16 @@
+void inOrder(Node* root)
+{
+   stack<Node*> s;
+   while(1){
+       while(root){
+           s.push(root);
+           root=root->left;
+       }
+       if(s.empty()) break;
+       root = s.top();
+       s.pop();
+       cout<<root->data<<" ";
+       root=root->right;
+       
+   }
+}

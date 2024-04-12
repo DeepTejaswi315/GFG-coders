@@ -1,0 +1,11 @@
+bool isHeap(Node * tree)
+{
+  if(!tree) return true;
+  if(! tree->left && ! tree->right ) return true;
+  if(tree->data < tree->left->data  || tree->data < tree->right->data)
+    return false;
+  else
+   {
+       return (isHeap(tree->left) && isHeap(tree->right));
+   }
+}

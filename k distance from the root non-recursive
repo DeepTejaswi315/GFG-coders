@@ -1,0 +1,18 @@
+void printKdistance(Node *root, int k)
+{
+ queue<Node*> q; 
+  q.push(root);
+  int h=0;
+  while(!q.empty()){
+      int size = q.size();
+      while(size--){
+          Node *t = q.front();
+          q.pop();
+          if(h==k)
+           cout<<t->data<<" ";
+          if(t->left) q.push(t->left);
+          if(t->right) q.push(t->right);
+      }
+      h++;
+  }
+}

@@ -1,0 +1,10 @@
+int getLevel(struct Node *root, int target)
+{
+	if(root==NULL) return 0;
+	if(root->data == target) return 1;
+	 int left = getLevel(root->left , target);
+	 int right = getLevel(root->right, target);
+	 if(left && right) return 0;
+	 if(left) return left+1;
+	 if(right) return right+1;
+}

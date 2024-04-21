@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n,k; cin>>n>>k;
+	    int a[n]; for(int i=0; i<n; i++) cin>>a[i];
+	    unordered_map<int, int> m;
+	    int ans=0,sum=0;
+	    for(int i=0; i<n; i++){
+	        sum+=a[i];
+	        if(sum==k)
+	          ans=i+1;
+	        if(m.find(sum) == m.end())
+	            m[sum]=i;
+	        if(m.find(sum-k) != m.end()){
+	            if(ans < i - m[sum-k])
+	            ans = i - m[sum-k];
+	        }
+	    }
+	    cout<<ans<<'\n';
+	}
+	return 0;
+}

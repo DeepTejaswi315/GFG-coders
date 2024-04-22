@@ -1,0 +1,36 @@
+int findMax(struct node* root)
+{
+  // if(root==NULL) return 0;
+   int romax, lmax, rmax,ans=INT_MIN;
+   if(root!=NULL){
+       romax = root->data;
+       lmax = findMax(root->left);
+       rmax = findMax(root->right);
+       
+       if(lmax > rmax)
+           ans=lmax;
+       else ans=rmax;
+       if(romax > ans)
+          ans=romax;
+   }
+ return ans;
+  
+}
+// Returns minimum value in a given Binary Tree
+int findMin(struct node* root)
+{
+ //if(root==NULL) return 0;
+   int romax, lmax, rmax,ans=INT_MAX;
+   if(root!=NULL){
+       romax = root->data;
+       lmax = findMin(root->left);
+       rmax = findMin(root->right);
+       
+       if(lmax < rmax)
+           ans=lmax;
+       else ans=rmax;
+       if(romax < ans)
+          ans=romax;
+   }
+ return ans;
+}

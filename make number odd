@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int makeOdd(int n){
+    if(n%2 != 0) return  1;
+    int ans=1;
+    while(n>0){
+        n/=2;
+        ans*=2;
+        if(n%2 != 0) return ans;
+    }
+}
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n; cin>>n;
+	    cout<<makeOdd(n)<<'\n';
+	}
+	return 0;
+}

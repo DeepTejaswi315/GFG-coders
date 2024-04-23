@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main() {
+	int t; cin>>t; while(t--){
+	    int n; cin>>n; 	    int a[n], b[n];
+	    vector<int> v,res;
+	    for(int i=0; i<n; i++){
+	        cin>>a[i];
+	        v.push_back(a[i]);
+	    }
+	     for(int i=0; i<n; i++){
+	        cin>>b[i];
+	        v.push_back(b[i]);
+	    }
+	    sort(v.begin(), v.end(), greater<int>());
+	    
+	    vector<int>::iterator ip; 
+    ip = std::unique(v.begin(), v.begin() + v.size()); 
+    v.resize(std::distance(v.begin(), ip)); 
+	    
+	    
+	    
+	    unordered_map<int, int> m;
+	    for(int i=0; i<n; i++) m[v[i]]++;
+	    for(int i=0; i<n; i++){
+	        if(m.find(b[i]) != m.end()){
+	            res.push_back(b[i]);
+	            m.erase(b[i]);
+	        }
+	    }
+	    for(int i=0; i<n; i++){
+	        if(m.find(a[i]) != m.end()){
+	            res.push_back(a[i]);
+	            m.erase(a[i]);
+	        }
+	    }
+	    for(int i=0; i<n; i++){
+	       cout<<res[i]<<" ";
+	    }
+	    cout<<'\n';
+	}
+	return 0;
+}

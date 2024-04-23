@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void maxAvg(int a[], int k, int n){
+    if(k>n) return ;
+    int csum[n];
+    csum[0]=a[0];
+    for(int i=1; i<n; i++){
+        csum[i] = csum[i-1] + a[i];
+    }
+    int max_sum = csum[k-1],start=0, end=k-1;
+    for(int i=k ;i<n; i++){
+        int x = csum[i] - csum[i-k];
+        if(x > max_sum){
+            end = i;
+           // start = i-k-1;
+            max_sum=x;
+        }
+    }
+    start=end-k+1;
+    for(int i=start; i<=end; i++) cout<<a[i]<<" ";
+    cout<<'\n';
+}
+int main() {
+	//code
+	int t;
+	cin>>t;
+	while(t--){
+	    int k,n;
+	    cin>>k>>n;
+	    int a[n];
+	    for(int i=0;i<n;i++){
+	        cin>>a[i];
+	    }
+	    maxAvg(a,k,n);
+	}
+	return 0;
+}

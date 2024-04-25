@@ -1,0 +1,26 @@
+int maxLevelSum(Node * root)
+{
+  int sum[100]={0};    
+  //if(!root) return 0;
+  queue< pair<Node*,int> > q;
+  q.push(make_pair(root,0));
+  while(!q.empty())
+  {
+      Node *p=q.front().first;
+      int l=q.front().second;
+      q.pop();
+      if(p)
+      {
+          q.push(make_pair(p->left, l+1));
+          q.push(make_pair(p->right, l+1));
+          sum[l]= sum[l]+p->data;
+      }
+}
+      int max=-1;
+      //int n=sizeof(sum[0])/sizeof(int);
+      for(int i=0;i<100;i++)
+      {
+          if(sum[i]>max) max=sum[i];
+      }
+return max;
+  }

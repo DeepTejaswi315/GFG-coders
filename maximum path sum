@@ -1,0 +1,26 @@
+int maxPathHelper(struct Node *root, int &res){
+    if(!root) return 0;
+    int l= maxPathHelper(root->left, res);
+    int r = maxPathHelper(root->right, res);
+    
+    if(root->left && root->right)
+    {
+        res = max(res, l + r + root->data); 
+  
+        // Return maxium possible value for root being 
+        // on one side 
+        return max(l, r) + root->data; 
+    }
+     return (!root->left)? r + root->data: 
+                          l + root->data; 
+}
+
+//maximum path sum from one leaf to another..
+ 
+
+int maxPathSum(struct Node *root)
+{
+int res=0;
+maxPathHelper(root, res);
+return res;
+}

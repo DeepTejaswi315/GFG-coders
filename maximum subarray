@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t; 
+	cin>>t;
+	while(t--){
+	    int n; cin>>n;
+	    int a[n]; for(int i=0; i<n; i++) cin>>a[i];
+	    int max=-1,sum=0,s=0,e=0,as,ae;
+	    for(int i=0; i<n; i++){
+	        if(a[i]<0){
+	            sum=0;
+	            s=i+1;
+	        }
+	        else{
+	            sum+=a[i];
+	            e=i;
+	         if(sum >= max){
+	              max=sum;
+	              as=s;
+	              ae=e;
+	         }
+	        }
+	    }
+	    for(int i=as; i<=ae; i++) cout<<a[i]<<" ";
+	    cout<<'\n';
+	}
+	
+	return 0;
+}

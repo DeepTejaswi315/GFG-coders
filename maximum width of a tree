@@ -1,0 +1,20 @@
+int getMaxWidth(Node* root)
+{
+   if(root==NULL) return 0;
+   queue<Node*> q;
+   q.push(root);
+   int ans,res=1;
+   while(!q.empty()){
+       int size=q.size();
+    //   ans=size;
+       while(size--){
+       Node *t=q.front();
+       q.pop();
+       if(t->left) q.push(t->left);
+       if(t->right) q.push(t->right);
+       }
+      if( res < q.size())
+         res=q.size();
+   }
+ return res;
+}
